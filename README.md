@@ -288,4 +288,26 @@ const formik = useFormik({
     email:Yup.string().required("email required").email("invalid email"),
     channel:Yup.string().required("Channek  field is required "),
   })
+
+  // second declaire formik
+  const formik = useFormik({
+    // initial value
+    initialValues,  
+    // onsubmit value  reuturn
+    onSubmit,
+    // validate
+    validationSchema 
+  });
+
 ```
+
+#### getFieldProps
+
+```javascript 
+    <input name="name" type="text"   placeholder="name"
+              // onChange={formik.handleChange}
+              // onBlur={formik.handleBlur}
+              // value={formik.values.name}
+              {...formik.getFieldProps("name")}
+            />
+```             

@@ -77,9 +77,10 @@ function FormikForm() {
               name="name"
               type="text"
               placeholder="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.name}
+              // onChange={formik.handleChange}
+              // onBlur={formik.handleBlur}
+              // value={formik.values.name}
+              {...formik.getFieldProps("name")}
             />
 
             {formik.errors.name  && formik.touched.name && (
@@ -95,9 +96,10 @@ function FormikForm() {
               name="email"
               type="text"
               placeholder="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
+              // onChange={formik.handleChange}
+              // onBlur={formik.handleBlur}
+              // value={formik.values.email}
+              {...formik.getFieldProps("email")}
             />
 
             {formik.errors.email  && formik.touched.email && (
@@ -113,9 +115,10 @@ function FormikForm() {
               name="channel"
               type="text"
               placeholder="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.channel}
+              // onChange={formik.handleChange}
+              // onBlur={formik.handleBlur}
+              // value={formik.values.channel}
+              {...formik.getFieldProps("channel")}
             />
             {formik.errors.channel  && formik.touched.channel && (
               <span className="text-red-900  font-bold">
