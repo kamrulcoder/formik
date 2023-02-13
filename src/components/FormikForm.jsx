@@ -1,7 +1,7 @@
 import React from "react";
 
 // first import useFormik
-import { useFormik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as  Yup from "yup"
 
 function FormikForm() {
@@ -54,74 +54,59 @@ function FormikForm() {
   }
 
 
-  // second declaire formik
-  const formik = useFormik({
-    // initial value
-    initialValues,  
-    // onsubmit value  reuturn
-    onSubmit,
-    // validate
-    validationSchema 
-  });
+  // // second declaire formik
+  // const formik = useFormik({
+  //   // initial value
+  //   initialValues,  
+  //   // onsubmit value  reuturn
+  //   onSubmit,
+  //   // validate
+  //   validationSchema 
+  // });
 
-  console.log(formik.values);
-  console.log(formik.errors);
   return (
     <div className="w-[600px]   mx-auto    shadow-lg p-10">
-      <div>
-        <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
+      <Formik 
+      
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+      >
+        <Form className="flex flex-col gap-5">
           <div>
             <label htmlFor="">Name : </label>
-            <input
+            <Field
               className="w-full px-3 py-2  font-bold  bg-gray-300"
               name="name"
               type="text"
-              placeholder="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.name}
-            />
+              placeholder="name"  />
 
-            {formik.errors.name  && formik.touched.name && (
-              <span className="text-red-900  font-bold">
-                {formik.errors.name}
-              </span>
-            )}
+              <ErrorMessage  name="name"/>
+            
           </div>
           <div>
             <label htmlFor="">Email : </label>
-            <input
+            <Field
               className="w-full px-3 py-2  font-bold  bg-gray-300"
               name="email"
               type="text"
               placeholder="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
+             
             />
+              <ErrorMessage  name="email"/>
 
-            {formik.errors.email  && formik.touched.email && (
-              <span className="text-red-900  font-bold">
-                {formik.errors.email}
-              </span>
-            )}
           </div>
           <div>
             <label htmlFor="">Channel : </label>
-            <input
+            <Field
               className="w-full px-3 py-2  font-bold  bg-gray-300"
               name="channel"
               type="text"
               placeholder="name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.channel}
+              
             />
-            {formik.errors.channel  && formik.touched.channel && (
-              <span className="text-red-900  font-bold">
-                {formik.errors.channel}
-              </span>
-            )}
+            <ErrorMessage  name="channel"/>
+
           </div>
           <div className="text-right">
             <button
@@ -131,8 +116,8 @@ function FormikForm() {
               Submti
             </button>
           </div>
-        </form>
-      </div>
+        </Form>
+      </Formik>
     </div>
   );
 }
